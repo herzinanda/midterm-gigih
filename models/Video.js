@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 
-const CommentSchema = new mongoose.Schema({
-    userId: {
+const VideoSchema = new mongoose.Schema({
+    thumbnailImg: {
         type: String,
         required: true,
     },
-    videoId: {
+    videoUrl: {
         type: String,
         required: true,
     },
@@ -13,6 +13,18 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    views: {
+        type: Number,
+        default: 0,
+    },
+    tags: {
+        type: [String],
+        default: [],
+    },
+    likes: {
+        type: Number,
+        default: 0,
+    },
 }, { timestamps: true })
 
-export default mongoose.model("Comment", CommentSchema)
+export default mongoose.model("Video", VideoSchema)
