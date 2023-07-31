@@ -37,3 +37,14 @@ export const getVideo = async (req, res, next) => {
         next(createError(500, "Internal Server Error"))
     }
 }
+
+export const addView = async (req, res, next) => {
+    try {
+        await Video.findByIdAndUpdate(req.params.videoId, {
+            $inc: { views: 1 }
+        })
+        res.status(200).json("The view has been increased")
+    } catch (error) {
+        next(createError(500, "Internal Server Error"))
+    }
+}
