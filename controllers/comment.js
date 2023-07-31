@@ -9,7 +9,7 @@ export const addComment = async (req, res, next) => {
         const comment = {
             videoId: videoId,
             username: req.body.username,
-            comment: req.body.videoUrl,
+            comment: req.body.comment,
         }
 
         if (!comment.comment || !comment.username) {
@@ -19,6 +19,27 @@ export const addComment = async (req, res, next) => {
         const newComment = await new Comment(comment);
         await newComment.save();
         res.status(200).send(newComment);
+    } catch (error) {
+        next(createError(500, "Internal Server Error"));
+    }
+}
+
+export const deleteComment = async (req, res, next) => {
+    try {
+        const commentId = req.params.commentId;
+        const comment = await Comment.findOneAndDelete({ _id: commentId });
+        res.status(200).json("Comment has been deleted")
+
+    } catch (error) {
+        next(createError(500, "Internal Server Error"));
+    }
+}
+
+export const getComments = async (req, res, next) => {
+    try {
+
+        const comments = await Comment.find();
+        res.status(200).send(comments);
     } catch (error) {
         next(createError(500, "Internal Server Error"));
     }
