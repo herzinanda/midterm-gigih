@@ -6,10 +6,6 @@ const UserSchema = new mongoose.Schema({
         requied: true,
         unique: true,
     },
-    password: {
-        type: String,
-        requied: true,
-    },
     imgUrl: {
         type: String,
         requied: true,
