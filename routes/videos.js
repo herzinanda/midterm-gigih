@@ -1,10 +1,10 @@
 import express from 'express';
-import { createVideo } from "../controllers/video.js";
+import { createVideo, getAllVideos, getVideo } from "../controllers/video.js";
 
 const router = express.Router();
 
 router.post("/create", createVideo);
-
-// router.post("/signin", signin);
+router.get("/getAllVideos", getAllVideos);
+router.get("/getVideo/:videoId", getVideo);
 
 export default router;

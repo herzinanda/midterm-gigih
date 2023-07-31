@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import videoRoutes from './routes/videos.js';
 
 const app = express();
 dotenv.config()
@@ -16,8 +17,8 @@ const connect = async () => {
 
 app.use(express.json())
 app.use("/api/videos", videoRoutes)
-app.use("/api/comments", commentRoutes)
-app.use("/api/products", productRoutes)
+// app.use("/api/comments", commentRoutes)
+// app.use("/api/products", productRoutes)
 
 app.use((err, req, res, next) => {
     const status = err.status || 500;
