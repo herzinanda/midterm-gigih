@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import videoRoutes from './routes/videos.js';
@@ -6,7 +7,6 @@ import commentRoutes from './routes/comments.js';
 import productRoutes from './routes/products.js';
 
 const app = express();
-const cors = require('cors');
 app.use(cors());
 dotenv.config()
 
