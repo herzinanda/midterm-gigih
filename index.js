@@ -37,9 +37,9 @@ app.use((err, req, res, next) => {
     })
 })
 
-const port = 8800;
+const port = 3000;
 
-app.listen(port, (req, res) => {
+app.listen(port, "0.0.0.0", () => {
     connect()
     console.log("Server runnting on port " + port)
     console.log("connected to Server!")
