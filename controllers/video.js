@@ -4,6 +4,7 @@ import { createError } from '../error.js'
 export const createVideo = async (req, res, next) => {
     try {
         const video = {
+            title: req.body.title,
             thumbnailImg: req.body.thumbnailImg,
             title: req.body.title,
             videoUrl: req.body.videoUrl,

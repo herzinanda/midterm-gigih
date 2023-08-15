@@ -35,10 +35,14 @@ export const deleteComment = async (req, res, next) => {
     }
 }
 
-export const getComments = async (req, res, next) => {
+export const getCommentsById = async (req, res, next) => {
     try {
+        const videoId = req.params.videoId;
 
-        const comments = await Comment.find();
+        const comments = await Comment.find({ videoId: videoId });
+        if (!comments) {
+            return next(createError(404, "Product not found"));
+        }
         res.status(200).send(comments);
     } catch (error) {
         next(createError(500, "Internal Server Error"));
