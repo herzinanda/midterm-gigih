@@ -19,9 +19,9 @@ const connect = async () => {
 }
 
 app.use(express.json())
-app.use("/api/videos", videoRoutes)
-app.use("/api/comments", commentRoutes)
-app.use("/api/products", productRoutes)
+app.use("/videos", videoRoutes)
+app.use("/comments", commentRoutes)
+app.use("/products", productRoutes)
 
 app.get('/', (req, res) => {
     res.send("Welcome to GIGIHPLAY API Server")
