@@ -6,6 +6,8 @@ import commentRoutes from './routes/comments.js';
 import productRoutes from './routes/products.js';
 
 const app = express();
+const cors = require('cors');
+app.use(cors());
 dotenv.config()
 
 const connect = async () => {
