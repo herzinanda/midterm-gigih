@@ -5,6 +5,7 @@ export const createVideo = async (req, res, next) => {
     try {
         const video = {
             thumbnailImg: req.body.thumbnailImg,
+            title: req.body.title,
             videoUrl: req.body.videoUrl,
             desc: req.body.desc,
         }

@@ -36,5 +36,6 @@ const port = 8800;
 
 app.listen(port, () => {
     connect()
+    console.log("Server runnting on port " + port)
     console.log("connected to Server!")
 })
