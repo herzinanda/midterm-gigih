@@ -9,8 +9,9 @@ const app = express();
 dotenv.config()
 
 const connect = async () => {
+    const Mongo_Connection_URI = process.env.MONGO
     try {
-        await mongoose.connect(process.env.MONGO);
+        await mongoose.connect(Mongo_Connection_URI);
         console.log("Connected to DB");
     } catch (err) {
         console.log(err);
@@ -21,6 +22,10 @@ app.use(express.json())
 app.use("/api/videos", videoRoutes)
 app.use("/api/comments", commentRoutes)
 app.use("/api/products", productRoutes)
+
+app.get('/', (req, res) => {
+    res.send("Welcome to GIGIHPLAY API Server")
+})
 
 app.use((err, req, res, next) => {
     const status = err.status || 500;
@@ -34,7 +39,7 @@ app.use((err, req, res, next) => {
 
 const port = 8800;
 
-app.listen(port, () => {
+app.listen(port, (req, res) => {
     connect()
     console.log("Server runnting on port " + port)
     console.log("connected to Server!")
